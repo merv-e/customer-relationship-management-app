@@ -1,10 +1,20 @@
-import { Text, View } from "react-native-web"
+import { SafeAreaView, ScrollView, TouchableOpacity} from "react-native"
+import { Text,  } from "react-native-web" //View
 
 const Welcome = () => {
+    const onPress = () => {
+        console.log("Pressed!");
+    };
+
   return (
-    <View>
-        <Text>Welcome to my app!</Text>
-    </View>
+    <SafeAreaView>
+        <ScrollView>
+            <Text>Welcome to my app!</Text>
+            <TouchableOpacity onPress={onPress}>
+                <Text>Click to View</Text>
+            </TouchableOpacity>
+        </ScrollView>
+    </SafeAreaView>
   )
 }
 
