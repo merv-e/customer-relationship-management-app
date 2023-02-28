@@ -1,19 +1,17 @@
+import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text, View} from "react-native"
 import welcomeStyles from "./styles";
 
  const Welcome = () =>  {
-    const onPress = () => {
-        console.log("Pressed!");
-    };
-
     const styles = StyleSheet.create(welcomeStyles());
+    const nav = useNavigation()
 
   return (
     <SafeAreaView>
         <ScrollView>
             <View style={styles.container}> 
                 <Text>Welcome to Customer Manager App!</Text>
-                <TouchableOpacity onPress={onPress}>
+                <TouchableOpacity onPress={() => nav.navigate("Regions")}>
                     <Text>Click to View The App</Text>
                 </TouchableOpacity>
             </View>

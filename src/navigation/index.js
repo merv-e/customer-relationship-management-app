@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import Welcome from "./screens/Welcome";
+import Regions from "./screens/regions/ListRegions";
 import Welcome from "./screens/Welcome";
+import Customers from "./screens/customers/ListCustomers"
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -12,14 +13,14 @@ const Navigation = () => {
                 name="Welcome"
                 component={Welcome}
             />
-            {/* <Stack.Screen
+             <Stack.Screen
                 name="Regions"
                 component={Regions}
             />
-            <Stack.Screen
+           <Stack.Screen
                 name="Customers"
                 component={Customers}
-            /> */}
+            />
         </Stack.Navigator>
     </NavigationContainer>
   )
