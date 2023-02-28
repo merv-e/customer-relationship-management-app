@@ -1,16 +1,17 @@
-import { SafeAreaView, ScrollView, TouchableOpacity} from "react-native"
-import { StyleSheet, Text, View } from "react-native-web" //View
+import { SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text, View} from "react-native"
+import welcomeStyles from "./styles";
 
-const Welcome = () => {
+ const Welcome = () =>  {
     const onPress = () => {
         console.log("Pressed!");
     };
+
+    const styles = StyleSheet.create(welcomeStyles());
 
   return (
     <SafeAreaView>
         <ScrollView>
             <View style={styles.container}> 
-            {/* scrollview'in icine view alinabilir mi? */}
                 <Text>Welcome to Customer Manager App!</Text>
                 <TouchableOpacity onPress={onPress}>
                     <Text>Click to View The App</Text>
@@ -21,14 +22,7 @@ const Welcome = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 
 
 export default Welcome
