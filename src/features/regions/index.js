@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, View, StyleSheet } from 'react-native'
+import { FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import Row from "./rows"
 import regionStyles from './styles' 
 
@@ -34,6 +34,13 @@ const index = () => {
 
   return (
     <View style={styles.container} >
+        <TouchableOpacity 
+          // onPress={() => {
+          //   navigate('Add Customer')
+          // }}
+        >
+          <Text style={styles.button} >Add a New Customer</Text>
+        </TouchableOpacity>
         <Text style={styles.header}>List of the Regions</Text>
         <FlatList
           data={regions}
