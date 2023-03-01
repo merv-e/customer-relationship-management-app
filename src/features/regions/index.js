@@ -2,12 +2,15 @@ import React from 'react'
 import { FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import Row from "./rows"
 import regionStyles from './styles' 
+import Customers from '../customers'
+import { useNavigation } from '@react-navigation/native'
 
-const index = () => {
+const Regions = () => {
 
   const styles = StyleSheet.create(regionStyles());
+  const navigate= useNavigation();
 
-  const Item = ({title}) => (
+  const Item = ({Customers}) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
     </View>
@@ -34,21 +37,34 @@ const index = () => {
 
   return (
     <View style={styles.container} >
+        <Text style={styles.header}>List of the Regions</Text>
+        <FlatList
+            data={regions}
+            renderItem={ ({item}) => 
+            
+            <TouchableOpacity
+              style={styles.item}
+              key={item.title}
+              onPress={() => navigate.navigate("Customers")}
+            >
+
+              <View> {/* style={{color: 'white'}} */}
+                <Text>{item.title}</Text>
+              </View>
+            
+            </TouchableOpacity>
+            }
+        />
+
         <TouchableOpacity 
-          // onPress={() => {
-          //   navigate('Add Customer')
-          // }}
+          onPress={() => {
+            navigate.navigate('Add Customer')
+          }}
         >
           <Text style={styles.button} >Add a New Customer</Text>
         </TouchableOpacity>
-        <Text style={styles.header}>List of the Regions</Text>
-        <FlatList
-          data={regions}
-          renderItem={ ({item}) => <Item title={item.title} />}
-          keyExtractor={(item) => item.id}
-        />
     </View>
   )
 }
 
-export default index
+export default Regions
