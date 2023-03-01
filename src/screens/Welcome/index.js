@@ -18,9 +18,6 @@ import welcomeStyles from "./styles";
         </ScrollView>
     </SafeAreaView>
   )
-}
-
-
-
+} 
 
 export default Welcome

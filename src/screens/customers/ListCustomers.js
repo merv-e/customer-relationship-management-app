@@ -1,13 +1,13 @@
 import React from 'react'
 import { ScrollView, SafeAreaView } from 'react-native'
-import Regions from "../../../features/regions/index"
+import Customers from "../../features/customers/index"
 
-const ListRegions = () => (
+const ListCustomers = () => (
   <SafeAreaView>
     <ScrollView>
-      <Regions />
+      <Customers />
     </ScrollView>
   </SafeAreaView>
 )
 
-export default ListRegions
+export default ListCustomers
