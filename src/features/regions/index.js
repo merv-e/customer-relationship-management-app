@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import Row from "./rows"
-import regionStyles from './styles' 
-import Customers from '../customers'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux';
+
+import regionStyles from './styles' 
+import * as actions from "../customer/reducer"; 
+
+import Row from "./rows"
+import Customers from '../customers'
 
 const Regions = () => {
-
   const styles = StyleSheet.create(regionStyles());
   const navigate= useNavigation();
 
@@ -35,9 +38,17 @@ const Regions = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getCustomers());
+  }, []);
+
+
   return (
     <View style={styles.container} >
         <Text style={styles.header}>List of the Regions</Text>
+        {/* Can Pressable be used here ??? */}
         <FlatList
             data={regions}
             renderItem={ ({item}) => 
@@ -67,6 +78,3 @@ const Regions = () => {
 }
 
 export default Regions
-// export default regions
-
-//  {/* style={{color: 'white'}} */}

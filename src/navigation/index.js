@@ -10,7 +10,6 @@ const Navigation = () => {
     const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-        {/* <Stack.Navigator initialRouteName="Add Customer">  */}
         <Stack.Navigator initialRouteName="Welcome"> 
             <Stack.Screen
                 name="Welcome"
@@ -28,7 +27,7 @@ const Navigation = () => {
                 name="Add Customer"
                 component={New}
             />
-   
+           
         </Stack.Navigator>
     </NavigationContainer>
   )
@@ -36,8 +35,3 @@ const Navigation = () => {
 
 export default Navigation
 
-
-        // {/* <Stack.Screen
-        //         name="Edit Customer Info"
-        //         component={Edit}
-        //     /> */}
