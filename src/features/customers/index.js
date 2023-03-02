@@ -9,7 +9,7 @@ const Customers = (props) => { /* {customers, region} */
 
   return (
     <View> 
-        <Text>The list of customers by region </Text>  {/*  region name will be changed as {region}conditionally.  */}
+        <Text>The list of customers by region </Text>  
         {(customers && customers.length > 0) ? (
                 <FlatList
                     data={customers || []}
@@ -29,3 +29,5 @@ const Customers = (props) => { /* {customers, region} */
 } 
 
 export default Customers
+
+// {/*  region name will be changed as {region}conditionally.  */}

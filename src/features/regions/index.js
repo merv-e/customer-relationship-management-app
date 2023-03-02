@@ -41,19 +41,18 @@ const Regions = () => {
         <FlatList
             data={regions}
             renderItem={ ({item}) => 
-            
-            <TouchableOpacity
-              style={styles.item}
-              key={item.title}
-              onPress={() => navigate.navigate("Customers")}
-            >
-
-              <View> {/* style={{color: 'white'}} */}
-                <Text>{item.title}</Text>
-              </View>
-            
-            </TouchableOpacity>
-            }
+              <TouchableOpacity
+                style={styles.item}
+                key={item.title}
+                onPress={() => navigate.navigate("Customers")}
+              >
+                <View>
+                  <Text>{item.title}</Text>
+                </View>
+              
+              </TouchableOpacity>
+              }
+            keyExtractor={item => item.id}
         />
 
         <TouchableOpacity 
@@ -68,3 +67,6 @@ const Regions = () => {
 }
 
 export default Regions
+// export default regions
+
+//  {/* style={{color: 'white'}} */}

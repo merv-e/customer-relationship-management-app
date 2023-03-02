@@ -3,12 +3,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Regions from "../screens/regions/ListRegions" 
 import Welcome from "../screens/Welcome/index";
 import Customers from "../screens/customers/ListCustomers"
+import New from "../screens/new/CreateCustomer"
+// import Edit from "../screens/new/CreateCustomer" ???.... will it be the same?
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome">
+        {/* <Stack.Navigator initialRouteName="Add Customer">  */}
+        <Stack.Navigator initialRouteName="Welcome"> 
             <Stack.Screen
                 name="Welcome"
                 component={Welcome}
@@ -21,6 +24,14 @@ const Navigation = () => {
                 name="Customers"
                 component={Customers}
             />
+           <Stack.Screen
+                name="Add Customer"
+                component={New}
+            />
+           {/* <Stack.Screen
+                name="Edit Customer Info"
+                component={Edit}
+            /> */}
         </Stack.Navigator>
     </NavigationContainer>
   )
