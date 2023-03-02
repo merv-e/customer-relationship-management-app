@@ -1,11 +1,13 @@
 import React from 'react'
 import { Text, View, FlatList , Button} from 'react-native'
 import Row from '../regions/rows';
+import { useNavigation } from '@react-navigation/native';
 
 const Customers = (props) => { /* {customers, region} */
   
   const customers = [{
   }]; // temporary
+  const n = useNavigation();
 
   return (
     <View> 
@@ -15,12 +17,13 @@ const Customers = (props) => { /* {customers, region} */
                     data={customers || []}
                     renderItem={(props) => <Row {...props} />}
                     keyExtractor={(item) => item.id}
+                    onPress={()=> { n.navigate('Add Customer')}}
                 />
             ) : (
                 <>
                     <Text>{'No Customers'}</Text>
                     <Button title={'Add Customer'} onPress={() => {
-                        navigate('Add Customer')
+                        n.navigate('Add Customer')
                     }} />
                 </>
             )}

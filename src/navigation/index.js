@@ -28,13 +28,16 @@ const Navigation = () => {
                 name="Add Customer"
                 component={New}
             />
-           {/* <Stack.Screen
-                name="Edit Customer Info"
-                component={Edit}
-            /> */}
+   
         </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
 export default Navigation
+
+
+        // {/* <Stack.Screen
+        //         name="Edit Customer Info"
+        //         component={Edit}
+        //     /> */}

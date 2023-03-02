@@ -2,12 +2,15 @@ import React from 'react'
 import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import newStyles from './styles';
 import SelectDropdown from 'react-native-select-dropdown';
+import { useNavigation } from '@react-navigation/native';
 
 const New = () => {
  
   const generateID = () => {
 
   }; 
+
+  const n = useNavigation();
 
   const [firstName, onChangeFN] = React.useState("");
   const [lastName, onChangeLN] = React.useState("");
