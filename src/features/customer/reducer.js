@@ -8,7 +8,7 @@ const initialState = {
         lastName: null,
         isActive: null,
         region: null, 
-        // userID : "", //to be generated.
+        userID : null, //to be generated.
     },
     get: {
         status: "PENDING",
@@ -75,7 +75,7 @@ const reducers = {
     },
     
     setForm: (state, { payload }) => {
-      const customer = state.show.customers.filter((c) => c.id === payload);  
+      const customer = state.show.customer.filter((c) => c.id === payload);  
       
       customer 
        ? state.customerForm = customer 

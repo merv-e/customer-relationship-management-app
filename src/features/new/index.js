@@ -53,8 +53,6 @@ const New = () => {
         value={lastName || ""}
       />
 
-      {/* Instead of using textInput below --use dropdown (above) but style it. */}
-
       <TextInput
         key={"isActive"}
         style={styles.text}
@@ -79,18 +77,19 @@ const New = () => {
 
 export default New
 
+{/* Instead of using textInput below --use dropdown (above) but style it. */}
 
-      {/* <SelectDropdown
-        style={styles.text}
-      	data={isUserActive}
-      	onSelect={(selectedItem, index) => {
-          selectedItem => setFormField("isActive", selectedItem) 
-      		// console.log(selectedItem, index)
-      	}}
-      	buttonTextAfterSelection={(selectedItem, index) => {
-      		return selectedItem
-      	}}
-      	rowTextForSelection={(item, index) => {
+{/* <SelectDropdown
+style={styles.text}
+data={isUserActive}
+onSelect={(selectedItem, index) => {
+  selectedItem => setFormField("isActive", selectedItem) 
+  // console.log(selectedItem, index)
+}}
+buttonTextAfterSelection={(selectedItem, index) => {
+  return selectedItem
+}}
+rowTextForSelection={(item, index) => {
       		return item
       	}}
       />
