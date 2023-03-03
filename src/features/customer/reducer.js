@@ -4,10 +4,11 @@ const name = 'customer'
 
 const initialState = {
     customerForm: {
-        firstNmame: "",
-        lastName: "",
-        isActive: "",
-        region: "", 
+        firstName: null,
+        lastName: null,
+        isActive: null,
+        region: null, 
+        // userID : "", //to be generated.
     },
     get: {
         status: "PENDING",

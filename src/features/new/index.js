@@ -3,50 +3,89 @@ import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nati
 import newStyles from './styles';
 import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from '@react-navigation/native';
+import { useUpdateFields } from '../customer/hooks';
 
 const New = () => {
- 
-  const generateID = () => {
-
-  }; 
-
-  const n = useNavigation();
-
-  const [firstName, onChangeFN] = React.useState("");
-  const [lastName, onChangeLN] = React.useState("");
-  const [active, onChangeIsActive] = React.useState("");
-  const [region, onChangeRegion] = React.useState("");
 
   const styles = StyleSheet.create(newStyles())
+
   const regions = [
     "Europe",
      "Americas",
      "Middle East",
      "Asia Pasific",
   ];
+
+  
   const isUserActive = ["active", "inactive"];
+  
+  const n = useNavigation();
+
+  const {fields, setFormField} = useUpdateFields();
+
+  console.log(fields);
+  // console.log(setFormField);
+
   //  possible to make a screen for both creating a new customer as well as editing one? 
+
+  const {
+    firstName,
+    lastName,
+    isActive,
+    region
+  } = fields
 
   return (
     <View style={styles.container}> 
       <Text style={styles.header}>Create a customer</Text>
       <TextInput
+        key={"firstName"}
         style={styles.text}
-        onChangeText={onChangeFN}
+        onChangeText={text => setFormField("firstName", text) }
         placeholder="First Name"
-        value={firstName}
+        value={firstName || ""}
       />
       <TextInput
+        key={"lastName"}
         style={styles.text}
-        onChangeText={onChangeLN}
+        onChangeText={text => setFormField("lastName", text) }
         placeholder="Last Name"
-        value={lastName}
+        value={lastName || ""}
       />
-      <SelectDropdown
+
+      {/* Instead of using textInput below --use dropdown (above) but style it. */}
+
+      <TextInput
+        key={"isActive"}
+        style={styles.text}
+        onChangeText={text => setFormField("isActive", text) }
+        placeholder="Is user active?"
+        value={isActive || ""}
+      />
+      <TextInput
+        key={"userID"}
+        style={styles.text}
+        onChangeText={text => setFormField("region", text) }
+        value={region || ""}
+        placeholder="Region"
+      />
+
+      <TouchableOpacity style={styles.button}>
+          <Text>Submit</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
+export default New
+
+
+      {/* <SelectDropdown
         style={styles.text}
       	data={isUserActive}
       	onSelect={(selectedItem, index) => {
-      		console.log(selectedItem, index)
+          selectedItem => setFormField("isActive", selectedItem) 
+      		// console.log(selectedItem, index)
       	}}
       	buttonTextAfterSelection={(selectedItem, index) => {
       		return selectedItem
@@ -71,27 +110,4 @@ const New = () => {
       		// if data array is an array of objects then return item.property to represent item in dropdown
       		return item
       	}}
-      />
-
-      {/* Instead of using textInput below --use dropdown (above) but style it. */}
-      
-      {/* <TextInput
-        style={styles.text}
-        onChangeText={onChangeIsActive}
-        placeholder="Active"
-        value={active}
-      />
-      <TextInput
-        style={styles.text}
-        onChangeText={onChangeRegion}
-        placeholder="Region"
-        value={region}
       /> */}
-      <TouchableOpacity style={styles.button}>
-          <Text>Submit</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
-
-export default New

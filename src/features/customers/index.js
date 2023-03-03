@@ -6,7 +6,7 @@ import React from "react";
 
 const Customers = (props) => { /* {customers, region} */
    
-  const customers = [{}]; // temporary
+//   const customers = [{}]; // temporary
   const n = useNavigation();
 
   return (
@@ -14,7 +14,7 @@ const Customers = (props) => { /* {customers, region} */
         <Text>The list of customers by region </Text>  
         {(customers && customers.length > 0) ? (
                 <FlatList
-                    data={customers || []}
+                    data={customer || []}
                     renderItem={(props) => <Row {...props} />}
                     keyExtractor={(item) => item.id}
                     onPress={()=> { n.navigate('Add Customer')}}
