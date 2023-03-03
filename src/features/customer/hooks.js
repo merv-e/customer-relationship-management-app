@@ -16,7 +16,7 @@ export const useUpdateFields = () => {
 
   return {
     fields,
-    setFormField: (field, value) => { 
+    setFormField: (field ) => (value) => { 
       console.log(`Updating field ${field} to ${value}`)
       return dispatch(actions.setFormField({ field, value }))
     },

@@ -41,14 +41,14 @@ const New = () => {
       <TextInput
         key={"firstName"}
         style={styles.text}
-        onChangeText={text => setFormField("firstName", text) }
+        onChangeText={setFormField("firstName") }
         placeholder="First Name"
         value={firstName || ""}
       />
       <TextInput
         key={"lastName"}
         style={styles.text}
-        onChangeText={text => setFormField("lastName", text) }
+        onChangeText={setFormField("lastName") }
         placeholder="Last Name"
         value={lastName || ""}
       />
@@ -58,14 +58,14 @@ const New = () => {
       <TextInput
         key={"isActive"}
         style={styles.text}
-        onChangeText={text => setFormField("isActive", text) }
+        onChangeText={setFormField("isActive") }
         placeholder="Is user active?"
         value={isActive || ""}
       />
       <TextInput
         key={"userID"}
         style={styles.text}
-        onChangeText={text => setFormField("region", text) }
+        onChangeText={setFormField("region") }
         value={region || ""}
         placeholder="Region"
       />
