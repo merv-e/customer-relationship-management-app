@@ -3,7 +3,7 @@ import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nati
 import newStyles from './styles';
 // import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from '@react-navigation/native';
-import { useUpdateFields } from '../customer/hooks';
+import { useNewCustomer, useUpdateFields } from '../customer/hooks';
 
 const New = () => {
 
@@ -15,14 +15,12 @@ const New = () => {
      "Middle East",
      "Asia Pasific",
   ];
-
-  const fakeSubmit = (form) => {
-    console.log("Fake submit!", form.values);
-  };
   
   const isUserActive = ["active", "inactive"];
   
   const n = useNavigation();
+
+  const {onSubmit} = useNewCustomer()
 
   const {fields, setFormField} = useUpdateFields();
 
@@ -73,7 +71,7 @@ const New = () => {
 
       <TouchableOpacity 
         style={styles.button} 
-        onPress={fakeSubmit}
+        onPress={onSubmit}
         >
           <Text>Submit</Text>
       </TouchableOpacity>

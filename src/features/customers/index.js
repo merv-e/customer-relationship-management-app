@@ -2,19 +2,14 @@ import { Text, View, FlatList , Button} from 'react-native'
 import Row from '../regions/rows';
 import { useNavigation } from '@react-navigation/native';
 import React from "react";
+import { useListCustomers, useNewCustomer } from '../customer/hooks';
 
 
 const Customers = (props) => { /* {customers, region} */
-   
-  const customers = [{
-    id: 1,
-    firstName: "Merve", 
-    lastName: "U",
-    isActive: "active",
-    region: "Europe",
-  }]; // temporary
 
-  const n = useNavigation();
+    const n = useNavigation();
+    
+    const customers = useListCustomers();
 
   return (
     <View> 
@@ -24,13 +19,13 @@ const Customers = (props) => { /* {customers, region} */
                     data={customers || []}
                     renderItem={(props) => <Row {...props} />}
                     keyExtractor={(item) => item.id}
-                    onPress={()=> { n.navigate('Add Customer')}}
+                    onPress={()=> { n.navigate('Edit Customer Info')}}
                 />
             ) : (
                 <>
                     <Text>{'No Customers'}</Text>
                     <Button title={'Add Customer'} onPress={() => {
-                        n.navigate('Add Customer', {region})
+                        n.navigate('Add Customer' ) //{region}
                     }} />
                 </>
             )}

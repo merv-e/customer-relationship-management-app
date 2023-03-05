@@ -1,8 +1,8 @@
-// import { all } from 'redux-saga/effects'
-// import customer from '../features/customer/sagas'
+import { all } from 'redux-saga/effects'
+import customer from '../features/customer/sagas'
 
-// export default function* rootSaga() {
-//     yield all([
-//         customer(),
-//     ])
-// }
+export default function* rootSaga() {
+    yield all([
+        customer(),
+    ])
+}

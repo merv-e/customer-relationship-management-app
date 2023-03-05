@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+import { PENDING, REQUESTING, SUCCESS, ERROR } from "../status"
 const name = 'customer'
 
 const initialState = {
@@ -10,20 +10,20 @@ const initialState = {
         region: null, 
     },
     get: {
-        status: "PENDING",
+        status: PENDING,
     },
-    show: { 
+    list: { 
         customers : [],
-        status : "PENDING",
+        status : PENDING,
     },
-    add: { 
-        status: "PENDING",
+    create: { 
+        status: PENDING,
     },
     edit: {
-        status: "PENDING",
+        status: PENDING,
     },
     clear: {
-        status: "PENDING",
+        status: PENDING,
     },
     error: {
         message: "",
@@ -32,91 +32,64 @@ const initialState = {
 
 const reducers = {
     getCustomers: (state) => {
-        state.get.status = "REQUESTING"
+        state.get.status = REQUESTING
     },
 
-    showCustomers_Status: (state, { payload }) => {
-        state.show.customers = payload;
-        state.get.status = "SUCCESS";
-        state.get = initialState.get;
-    },
-
-    noCustomerFound_Status: (state) => {
-        state.get.status = "ERROR";
+    createCustomer : (state) => {
+        state.create.status = REQUESTING
+    }, 
+    
+    createCustomer_Result: (state, {payload}) => {
+        state.create.status = SUCCESS
+        state.list.customers = payload
     },
     
-    addCustomer_Status: (state) => {
-        state.add.status = "REQUESTING";
-    },
-
-    addCustomer: (state, { payload }) => {
-        state.add.status = "SUCCESS";
-        state.show.customers = payload;
-        state.customerForm = { ...initialState.customerForm } 
-        state.add = initialState.add;
-    },
-
-    addCustomer_Success:  (state, { payload }) => {
-        state.add.status = "SUCCESS";
-        state.show.customers = payload;
-        state.customerForm = { ...initialState.customerForm }; 
-        state.add = initialState.add;
-    },
-
-    addCustomer_Error: (state, { payload }) => {
-        state.add.status = "ERROR";
-        state.error.message = payload;
-        state.customerForm = { ...initialState.customerForm };
-    },
-
-    editCustomer: (state) => {
-        state.edit.status = "REQUESTING";
+    createCustomer_Error: (state, { payload }) => {
+        state.create.status = ERROR;
+        //     state.error.message = payload;
+        //     state.customerForm = { ...initialState.customerForm };
     },
     
-    setForm: (state, { payload }) => {
-      const customer = state.show.customer.filter((c) => c.id === payload);  
-      
-      customer 
-       ? state.customerForm = customer 
-       : state.error.message = `The customer you are looking for can not be found with id:${payload}`;
-    },
-
     setFormField: (state, { payload }) => {
         const current = state.customerForm;
         const { field, value } = payload;
-
+        
         const fields = {
             ...current,
             [field]: value,
         };
-
+        
         state.customerForm = fields
     },
+    
+    editCustomer: (state) => {
+        state.edit.status = REQUESTING;
+    },
 
-    editCustomer_Success: (state, { payload }) => {
-        state.edit.status = "SUCCESS";
-        state.show.customers = payload;
+    editCustomerResult: (state, { payload }) => {
+        state.edit.status = SUCCESS;
+        state.list.customers = payload;
+        
         state.customerForm = { ...initialState.customerForm }; 
         state.edit.status = initialState.edit.status;
     },
 
-    editCustomer_Error: (state) => {
-        state.edit.status = "ERROR";
+    editCustomerError: (state) => {
+        state.edit.status = ERROR;
+        state.error.message = payload
     },
 
-    clearStorage: (state) => {
-        state.clear.status = "REQUESTING";
-    },
-    
-    clearStorage_Success: (state) => {
-      state.clear.status = "SUCCESS";
-      state.show = { ...initialState.show };
-      state.clear.status = initialState.clear.status;
-    },
+        // listCustomers_Status: (state, { payload }) => {
+            //     state.list.customers = payload;
+            //     state.get.status = SUCCESS;
+            //     state.get = initialState.get;
+            // },
+            
+        //noCustomerFound_Status: (state) => {
+        //     state.get.status = ERROR;
+        // },
+        
 
-    clearStorage_Error: (state) => {
-        state.clear.status = "ERROR";
-    },
 }
 
 const slice = createSlice({
@@ -126,21 +99,18 @@ const slice = createSlice({
 })
 
 export const {
-    getCustomers,
-    showCustomers_Status,
-    noCustomerFound_Status,
-    addCustomer_Status,
-    addCustomer,
-    addCustomer_Success,
-    addCustomer_Error,
-    editCustomer,
-    editCustomer_Success,
-    editCustomer_Error,
-    clearStorage,
-    clearStorage_Success,
-    clearStorage_Error,
+    createCustomer,
+    createCustomer_Result,
+    createCustomer_Error,
     setForm,
     setFormField,
+    getCustomers,
+    editCustomer,
+    editCustomerResult,
+    editCustomerError,
+    // listCustomers_Status,
+    // noCustomerFound_Status,
+    // createCustomer_Success,
 } = slice.actions
 
 export default slice.reducer
