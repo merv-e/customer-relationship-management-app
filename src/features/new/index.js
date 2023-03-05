@@ -1,7 +1,7 @@
 import React from 'react'
 import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import newStyles from './styles';
-import SelectDropdown from 'react-native-select-dropdown';
+// import SelectDropdown from 'react-native-select-dropdown';
 import { useNavigation } from '@react-navigation/native';
 import { useUpdateFields } from '../customer/hooks';
 
@@ -16,6 +16,9 @@ const New = () => {
      "Asia Pasific",
   ];
 
+  const fakeSubmit = (form) => {
+    console.log("Fake submit!", form.values);
+  };
   
   const isUserActive = ["active", "inactive"];
   
@@ -29,7 +32,7 @@ const New = () => {
   //  possible to make a screen for both creating a new customer as well as editing one? 
 
   const {
-    firstName,
+    firstName, 
     lastName,
     isActive,
     region
@@ -68,7 +71,10 @@ const New = () => {
         placeholder="Region"
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={fakeSubmit}
+        >
           <Text>Submit</Text>
       </TouchableOpacity>
     </View>
@@ -77,36 +83,3 @@ const New = () => {
 
 export default New
 
-{/* Instead of using textInput below --use dropdown (above) but style it. */}
-
-{/* <SelectDropdown
-style={styles.text}
-data={isUserActive}
-onSelect={(selectedItem, index) => {
-  selectedItem => setFormField("isActive", selectedItem) 
-  // console.log(selectedItem, index)
-}}
-buttonTextAfterSelection={(selectedItem, index) => {
-  return selectedItem
-}}
-rowTextForSelection={(item, index) => {
-      		return item
-      	}}
-      />
-      <SelectDropdown
-        style={styles.text}
-      	data={regions}
-      	onSelect={(selectedItem, index) => { //to be changed...
-      		console.log(selectedItem, index)
-      	}}
-      	buttonTextAfterSelection={(selectedItem) => {
-      		// text represented after item is selected
-      		// if data array is an array of objects then return selectedItem.property to render after item is selected
-      		return selectedItem
-      	}}
-      	rowTextForSelection={(item, index) => {
-      		// text represented for each item in dropdown
-      		// if data array is an array of objects then return item.property to represent item in dropdown
-      		return item
-      	}}
-      /> */}

@@ -8,7 +8,6 @@ const initialState = {
         lastName: null,
         isActive: null,
         region: null, 
-        userID : null, //to be generated.
     },
     get: {
         status: "PENDING",
