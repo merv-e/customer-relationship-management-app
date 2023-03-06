@@ -22,7 +22,7 @@ const Form = ({handleSubmit, customerID, status }) => {
   
   const onSubmit = () => {
     handleSubmit() 
-    n.navigate("Customers")
+    // n.navigate("Customers")
   };
 
   const {

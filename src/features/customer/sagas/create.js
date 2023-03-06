@@ -7,13 +7,13 @@ export function* watchCreateCustomer() {
 }
 
 export function* takeCreateCustomer() {
-    console.log('Starting fetch request to API')
+    console.log('Starting fetch request to API -- CREATE')
     try {
         const fields = yield select(state => state.customer.customerForm)
 
         const customers = yield select(state => state.customer.list.customers)
 
-        const customerID = {
+        const customer = {
             id: customers.length + 1,
             ...fields,
         }
