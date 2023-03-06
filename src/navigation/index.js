@@ -17,7 +17,7 @@ const Navigation = () => {
             />
              <Stack.Screen
                 name="Regions"
-                component={Regions}
+                component={ListRegions}
             />
            <Stack.Screen
                 name="Customers"

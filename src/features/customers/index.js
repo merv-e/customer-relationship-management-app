@@ -1,5 +1,5 @@
 import { Text, View, FlatList , Button} from 'react-native'
-import Row from '../regions/rows';
+import Row from './rows';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from "react";
 import { useListCustomers } from '../customer/hooks';
@@ -14,6 +14,8 @@ const Customers = (props) => { /* {customers, region} */
     // const region = params.region
 
     // filterByRegion
+    console.log(customers);
+    console.log(params);
 
   return (
     <View> 
