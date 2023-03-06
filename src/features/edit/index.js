@@ -4,7 +4,7 @@ import { useEditCustomer, useEditCustomerStatus } from '../customer/hooks'
 import Form from '../Form'
 
 const Edit = () => {
-  const styles = formStyles()
+  // const styles = formStyles()
 
   const { params } = useRoute()
   const {customerID} = params;

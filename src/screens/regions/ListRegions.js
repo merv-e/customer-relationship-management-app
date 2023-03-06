@@ -4,18 +4,12 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux';
 import regionStyles from './styles' 
 import * as actions from "../../features/customer/reducer"; 
-import Customers from '../customers/ListCustomers'
-// import Regions from "../../features/regions/index"
 
 const ListRegions = () => {
+
     const styles = StyleSheet.create(regionStyles());
     const {navigate}= useNavigation();
-    
-    // const Item = ({Customers}) => (
-    //   <View style={styles.item}>
-    //     <Text style={styles.title}>{title}</Text>
-    //   </View>
-    // );
+    const dispatch = useDispatch();
     
     const regions = [
       {
@@ -36,7 +30,6 @@ const ListRegions = () => {
       },
     ];
     
-    const dispatch = useDispatch();
     
     useEffect(() => {
       dispatch(actions.getCustomers());
@@ -49,19 +42,25 @@ const ListRegions = () => {
        <View style={styles.container} >
         <Text style={styles.header}>List of the Regions</Text>
        
-        {/* Can Pressable be used here ??? */}
+        {/* Maybe use Pressable */}
         
+        {/* MAP REGIONS */}
+
         {
           regions.map(region => 
           <Button
             title={region.title} 
             key={region.id}
-            onPress={() => navigate("Customers", {region: region.title})}
-
+            onPress={() => 
+              navigate("Customers", 
+              { region: region.title}
+            )
+            }
            />
            )
         }
 
+        {/* ADD CUSTOMER BUTTON */}
         <TouchableOpacity 
           onPress={() => {
             navigate('Add Customer')

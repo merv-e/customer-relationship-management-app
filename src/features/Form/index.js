@@ -1,15 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import newStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useUpdateFields } from '../customer/hooks';
 // import SelectDropdown from 'react-native-select-dropdown';
+import { SelectList } from 'react-native-dropdown-select-list';
 
 const Form = ({handleSubmit, customerID, status }) => {
 
   const styles = StyleSheet.create(newStyles())
   const n = useNavigation();
   const {fields, setFormField} = useUpdateFields(customerID);
+
+  const [selected, setSelected] = React.useState("");
 
   const regions = [
     "Europe",
@@ -22,7 +25,7 @@ const Form = ({handleSubmit, customerID, status }) => {
   
   const onSubmit = () => {
     handleSubmit() 
-    n.navigate("Customers")
+    n.navigate("List Regions")
   };
 
   const {
@@ -66,6 +69,22 @@ const Form = ({handleSubmit, customerID, status }) => {
         value={region || ""}
         placeholder="Region"
       />
+
+        {/* <SelectList 
+          setSelected={(val) => setSelected(val)} 
+          data={isUserActive} 
+          save="value"
+          onSelect={setFormField("isActive")(value) }
+          
+        />
+
+        <SelectList 
+          setSelected={(val) => setSelected(val)} 
+          data={regions} 
+          save="value" 
+          onChangeText={setFormField("region")(selected)}
+        /> */}
+
 
       <TouchableOpacity 
         style={styles.button} 
