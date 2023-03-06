@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
-import { useEditAnimal, useEditAnimalStatus } from '../hooks'
+import { useEditCustomer, useEditCustomerStatus } from '../hooks'
 import Form from '../Form'
 
 const Edit = () => {
@@ -8,13 +8,14 @@ const Edit = () => {
 
   const { params } = useRoute()
   const {customerID} = params;
+  
   const {status, onSubmit } = useEditCustomer(customerID)
 
   return (
     <Form 
-     onPress={onSubmit}  // handleSubmit
+     handleSubmit={onSubmit} 
      status={status} 
-     animalID={animalID} 
+     customerID={customerID} 
      />
   )
 }

@@ -11,11 +11,11 @@ const ListRegions = () => {
     const styles = StyleSheet.create(regionStyles());
     const {navigate}= useNavigation();
     
-    const Item = ({Customers}) => (
-      <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-    );
+    // const Item = ({Customers}) => (
+    //   <View style={styles.item}>
+    //     <Text style={styles.title}>{title}</Text>
+    //   </View>
+    // );
     
     const regions = [
       {
@@ -61,6 +61,7 @@ const ListRegions = () => {
            />
            )
         }
+
         <TouchableOpacity 
           onPress={() => {
             navigate('Add Customer')
@@ -68,6 +69,7 @@ const ListRegions = () => {
         >
           <Text style={styles.button} >Add a New Customer</Text>
         </TouchableOpacity>
+        
       </View>
     </ScrollView>
   </SafeAreaView>

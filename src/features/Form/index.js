@@ -21,7 +21,7 @@ const Form = ({handleSubmit, customerID, status }) => {
   const isUserActive = ["active", "inactive"];
   
   const onSubmit = () => {
-    handleSubmit() //or on handleSubmit?
+    handleSubmit() 
     n.navigate("Customers")
   };
 
@@ -69,7 +69,7 @@ const Form = ({handleSubmit, customerID, status }) => {
 
       <TouchableOpacity 
         style={styles.button} 
-        handleSubmit={onSubmit} //onPress
+        onPress={onSubmit} 
         >
           <Text>Submit</Text>
       </TouchableOpacity>

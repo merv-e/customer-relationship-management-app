@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { PENDING, REQUESTING, SUCCESS, ERROR } from "../status"
+
 const name = 'customer'
 
 const initialState = {
@@ -42,12 +43,14 @@ const reducers = {
     createCustomer_Result: (state, {payload}) => {
         state.create.status = SUCCESS
         state.list.customers = payload
+        state.customerForm = initialState.customerForm
+        state.create = initialState.create
     },
     
     createCustomer_Error: (state, { payload }) => {
         state.create.status = ERROR;
-        //     state.error.message = payload;
-        //     state.customerForm = { ...initialState.customerForm };
+            state.error.message = payload;
+            state.customerForm = initialState.customerForm    
     },
     
     setFormField: (state, { payload }) => {
@@ -61,6 +64,16 @@ const reducers = {
         
         state.customerForm = fields
     },
+
+    setForm: (state, { payload }) => {
+        const customer = state.list.customers.find(c => c.id = payload)
+        if (customer) {
+        state.customerForm = customer
+        } 
+        else {
+        state.error.message = `could not find customer with id: ${payload}`
+        }
+        },
     
     editCustomer: (state) => {
         state.edit.status = REQUESTING;
@@ -71,12 +84,17 @@ const reducers = {
         state.list.customers = payload;
         
         state.customerForm = { ...initialState.customerForm }; 
-        state.edit.status = initialState.edit.status;
+        state.edit = initialState.edit;
     },
 
     editCustomerError: (state) => {
         state.edit.status = ERROR;
-        state.error.message = payload
+        state.error.message = payload;
+        state.customerForm = initialState.customerForm
+    },
+    
+    editCustomerStatus: (state, { payload }) => {
+        state.edit = payload
     },
 
         // listCustomers_Status: (state, { payload }) => {
@@ -108,6 +126,7 @@ export const {
     editCustomer,
     editCustomerResult,
     editCustomerError,
+    editCustomerStatus,
     // listCustomers_Status,
     // noCustomerFound_Status,
     // createCustomer_Success,

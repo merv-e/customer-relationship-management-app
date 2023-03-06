@@ -7,7 +7,11 @@ const New = () => {
   const status = useCreateCustomerStatus()
 
   return (
-    <Form handleSubmit={onSubmit} status={status} customerID={null} />
+    <Form 
+      handleSubmit={onSubmit} 
+      status={status} 
+      customerID={null} 
+      />
   )
 }
 
