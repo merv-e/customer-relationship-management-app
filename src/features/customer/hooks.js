@@ -4,20 +4,20 @@ import { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { INPROGRESS, PENDING } from '../status';
 
-export const useUpdateFields = (customerID) => {
+export const useUpdateFields = (customerID = null) => {
   
   const dispatch = useDispatch()
   const status = useSelector(state => state.customer.edit.status)
   const fields = useSelector(state => state.customer.customerForm)
 
-  console.log("animal ID : ", animalID, status, animalID && status !== INPROGRESS);
+  console.log("customer ID : ", customerID, status, customerID && status !== INPROGRESS);
 
   useEffect(()=> {
    if (customerID && status === PENDING) {
       dispatch(actions.setForm(customerID))
    }
 
-  },[animalID, status])
+  },[customerID, status])
 
   return {
     fields,

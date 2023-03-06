@@ -3,8 +3,6 @@ import Row from './rows';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from "react";
 import { useListCustomers } from '../customer/hooks';
-// import
-
 
 const Customers = (props) => { /* {customers, region} */
 

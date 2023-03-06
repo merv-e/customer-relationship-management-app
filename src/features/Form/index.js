@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useUpdateFields } from '../customer/hooks';
 // import SelectDropdown from 'react-native-select-dropdown';
 
-const Form = () => {
+const Form = ({handleSubmit, customerID, status }) => {
 
   const styles = StyleSheet.create(newStyles())
   const n = useNavigation();
-  const {fields, setFormField} = useUpdateFields(animalID);
+  const {fields, setFormField} = useUpdateFields(customerID);
 
   const regions = [
     "Europe",
@@ -21,7 +21,7 @@ const Form = () => {
   const isUserActive = ["active", "inactive"];
   
   const onSubmit = () => {
-    onPress() //or on handleSubmit?
+    handleSubmit() //or on handleSubmit?
     n.navigate("Customers")
   };
 

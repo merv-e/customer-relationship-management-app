@@ -11,7 +11,7 @@ import welcomeStyles from "./styles";
         <ScrollView>
             <View style={styles.container}> 
                 <Text>Welcome to Customer Manager App!</Text>
-                <TouchableOpacity onPress={() => nav.navigate("Regions")}>
+                <TouchableOpacity onPress={() => nav.navigate("List Regions")}>
                     <Text>Click to View The App</Text>
                 </TouchableOpacity>
             </View>

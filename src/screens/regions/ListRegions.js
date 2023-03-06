@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { ScrollView, SafeAreaView, FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { ScrollView, SafeAreaView, FlatList, Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux';
 import regionStyles from './styles' 
-import * as actions from "../customer/reducer"; 
+import * as actions from "../../features/customer/reducer"; 
 import Customers from '../customers/ListCustomers'
 // import Regions from "../../features/regions/index"
 
@@ -48,25 +48,19 @@ const ListRegions = () => {
       <ScrollView>
        <View style={styles.container} >
         <Text style={styles.header}>List of the Regions</Text>
+       
         {/* Can Pressable be used here ??? */}
-        <FlatList
-            data={regions}
-            renderItem={ 
-              ({item}) => 
-              <TouchableOpacity
-                style={styles.item}
-                key={item.title}
-                onPress={() => navigate("Customers")}
-              >
-                <View>
-                  <Text>{item.title}</Text>
-                </View>
-              
-              </TouchableOpacity>
-              }
-            keyExtractor={item => item.id}
-        />
+        
+        {
+          regions.map(region => 
+          <Button
+            title={region.title} 
+            key={region.id}
+            onPress={() => navigate("Customers", {region: region.title})}
 
+           />
+           )
+        }
         <TouchableOpacity 
           onPress={() => {
             navigate('Add Customer')
