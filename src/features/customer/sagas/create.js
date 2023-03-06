@@ -21,7 +21,7 @@ export function* takeCreateCustomer() {
         // pretend call to API
         yield delay(500)
 
-        const result = [customerID, ...customers]
+        const result = [customer, ...customers]
 
         yield put(actions.createCustomer_Result(result))
     } catch (error) {

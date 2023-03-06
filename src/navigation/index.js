@@ -4,7 +4,7 @@ import ListRegions from "../screens/regions/ListRegions"
 import Welcome from "../screens/Welcome/index";
 import Customers from "../screens/customers/ListCustomers"
 import New from "../screens/new/CreateCustomer"
-import Edit from "../screens/Edit";
+import Edit from "../screens/edit/EditCustomer";
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -29,7 +29,7 @@ const Navigation = () => {
             />
 
            <Stack.Screen
-                name="Edit Customer Info"
+                name="Edit Customer"
                 component={Edit}
             />
            

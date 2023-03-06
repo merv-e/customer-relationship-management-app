@@ -22,7 +22,7 @@ const Form = ({handleSubmit, customerID, status }) => {
   
   const onSubmit = () => {
     handleSubmit() 
-    // n.navigate("Customers")
+    n.navigate("Customers")
   };
 
   const {
@@ -32,7 +32,7 @@ const Form = ({handleSubmit, customerID, status }) => {
     region
   } = fields
 
-  console.log(fields);
+  // console.log(fields); 
 
   return (
     <View style={styles.container}> 

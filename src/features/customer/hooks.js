@@ -10,15 +10,15 @@ export const useUpdateFields = (customerID = null) => {
   const status = useSelector(state => state.customer.edit.status)
   const fields = useSelector(state => state.customer.customerForm)
 
-  console.log("customer.id : ", customerID, "status:", status, );
+  console.log("customerID : ", customerID, "status:", status,
   //customerID && status !== INPROGRESS
+  );
 
   useEffect(()=> {
   //  if (customerID && status === PENDING) {
       dispatch(actions.setForm(customerID))
   //  }
-
-  },[customerID, status])
+  }, [customerID, status]);
 
   return {
     fields,

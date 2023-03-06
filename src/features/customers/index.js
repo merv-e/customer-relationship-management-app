@@ -15,18 +15,21 @@ const Customers = () => {
     console.log(customers);
     // console.log(region); 
 
-    const filterByRegion = customers.filter(c=> c.region === region)
+    // const filterByRegion = customers.filter(c=> c.region === region)
+    // filterByRegion && filterByRegion.length > 0
+
+    // console.log(filterByRegion); 
     // {region}
   return (
     <View> 
         <Text>The list of customers by region </Text>  
-        {(filterByRegion && filterByRegion.length > 0) ? (
+        {(customers && customers.length > 0) ? (
                 <FlatList
                     data={customers || []}
                     renderItem={(props) => <Row {...props} />}
                     keyExtractor={(item) => item.id}
                     onPress={()=> 
-                     navigate('Edit Customer Info' 
+                     navigate('Edit Customer' 
                      ,
                      {customerID: item.id}
                     )}
