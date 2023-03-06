@@ -1,23 +1,22 @@
-import { Text, View, FlatList , Button} from 'react-native'
+import { Text, View, FlatList , Button} from 'react-native' 
 import Row from './rows';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from "react";
 import { useListCustomers } from '../customer/hooks';
 
-const Customers = (props) => { /* {customers, region} */
+const Customers = (props) => {  
 
     const {navigate} = useNavigation();
     const customers = useListCustomers();
-    const {params} = useRoute();
-    // const region = params.region
 
-    // filterByRegion
+    const {params} = useRoute();
+    const region = params.region;
+
     console.log(customers);
-    console.log(params);
 
   return (
     <View> 
-        <Text>The list of customers by region </Text>  
+        <Text>The list of customers by {region} </Text>  
         {(customers && customers.length > 0) ? (
                 <FlatList
                     data={customers || []}
@@ -38,5 +37,3 @@ const Customers = (props) => { /* {customers, region} */
 } 
 
 export default Customers
-
-// {/*  region name will be changed as {region}conditionally.  */}

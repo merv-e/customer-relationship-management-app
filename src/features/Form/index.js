@@ -33,9 +33,6 @@ const Form = ({handleSubmit, customerID, status }) => {
   } = fields
 
   console.log(fields);
-  // console.log(setFormField);
-
-  //  possible to make a screen for both creating a new customer as well as editing one? 
 
   return (
     <View style={styles.container}> 
@@ -72,7 +69,7 @@ const Form = ({handleSubmit, customerID, status }) => {
 
       <TouchableOpacity 
         style={styles.button} 
-        onPress={onSubmit}
+        handleSubmit={onSubmit} //onPress
         >
           <Text>Submit</Text>
       </TouchableOpacity>
