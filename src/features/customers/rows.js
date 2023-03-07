@@ -12,10 +12,11 @@ const Row = ({ item , onPress }) => {
 
     return (
         <TouchableOpacity onPress={onPress}>
-            <View key={item.id} style={{ borderWidth: 1, padding: 10, margin: 10 }}>
-                <Text key={'id'}>ID: {item.id}</Text>
-                <Text key={'firstName'}>First Name: {item.firstName}</Text>
-                <Text key={'lastName'}>Last Name: {item.lastName}</Text>
+            <View 
+            style={{ borderWidth: 1, padding: 10, margin: 10 }}>
+                <Text>ID: {item.id}</Text>
+                <Text>First Name: {item.firstName}</Text>
+                <Text>Last Name: {item.lastName}</Text>
                 <Text>User Activity: {item.isActive}</Text>
                 <Text>Region: {item.region}</Text>
             </View>

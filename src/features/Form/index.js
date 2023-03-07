@@ -4,7 +4,7 @@ import newStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { useUpdateFields } from '../customer/hooks';
 // import SelectDropdown from 'react-native-select-dropdown';
-import { SelectList } from 'react-native-dropdown-select-list';
+// import { SelectList } from 'react-native-dropdown-select-list';
 
 const Form = ({handleSubmit, customerID, status }) => {
 
@@ -12,16 +12,16 @@ const Form = ({handleSubmit, customerID, status }) => {
   const n = useNavigation();
   const {fields, setFormField} = useUpdateFields(customerID);
 
-  const [selected, setSelected] = React.useState("");
+  // const [selected, setSelected] = React.useState("");
 
-  const regions = [
-    "Europe",
-     "Americas",
-     "Middle East",
-     "Asia Pasific",
-  ];
+  // const regions = [
+  //   "Europe",
+  //    "Americas",
+  //    "Middle East",
+  //    "Asia Pasific",
+  // ];
   
-  const isUserActive = ["active", "inactive"];
+  // const isUserActive = ["active", "inactive"];
   
   const onSubmit = () => {
     handleSubmit() 
@@ -36,6 +36,7 @@ const Form = ({handleSubmit, customerID, status }) => {
   } = fields
 
   // console.log(fields); 
+  console.log(status);
 
   return (
     <View style={styles.container}> 
@@ -43,14 +44,14 @@ const Form = ({handleSubmit, customerID, status }) => {
       <TextInput
         key={"firstName"}
         style={styles.text}
-        onChangeText={setFormField("firstName") }
+        onChangeText={(value) => setFormField("firstName", value) }
         placeholder="First Name"
         value={firstName || ""}
       />
       <TextInput
         key={"lastName"}
         style={styles.text}
-        onChangeText={setFormField("lastName") }
+        onChangeText={(value) => setFormField("lastName", value) }
         placeholder="Last Name"
         value={lastName || ""}
       />
@@ -58,33 +59,17 @@ const Form = ({handleSubmit, customerID, status }) => {
       <TextInput
         key={"isActive"}
         style={styles.text}
-        onChangeText={setFormField("isActive") }
+        onChangeText={(value) => setFormField("isActive", value) }
         placeholder="Is user active?"
         value={isActive || ""}
       />
       <TextInput
         key={"userID"}
         style={styles.text}
-        onChangeText={setFormField("region") }
+        onChangeText={(value) => setFormField("region", value) }
         value={region || ""}
         placeholder="Region"
       />
-
-        {/* <SelectList 
-          setSelected={(val) => setSelected(val)} 
-          data={isUserActive} 
-          save="value"
-          onSelect={setFormField("isActive")(value) }
-          
-        />
-
-        <SelectList 
-          setSelected={(val) => setSelected(val)} 
-          data={regions} 
-          save="value" 
-          onChangeText={setFormField("region")(selected)}
-        /> */}
-
 
       <TouchableOpacity 
         style={styles.button} 
@@ -98,3 +83,17 @@ const Form = ({handleSubmit, customerID, status }) => {
 
 export default Form
 
+// {/* <SelectList 
+//           setSelected={(val) => setSelected(val)} 
+//           data={isUserActive} 
+//           save="value"
+//           onSelect={setFormField("isActive")(value) }
+          
+//         />
+
+//         <SelectList 
+//           setSelected={(val) => setSelected(val)} 
+//           data={regions} 
+//           save="value" 
+//           onChangeText={setFormField("region")(selected)}
+//         /> */}

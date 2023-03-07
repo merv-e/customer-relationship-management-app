@@ -8,10 +8,9 @@ export const useUpdateFields = (customerID = null) => {
   
   const dispatch = useDispatch()
   const status = useSelector(state => state.customer.edit.status)
-  const fields = useSelector(state => state.customer.customerForm)
+  const fields = useSelector(state => state.customer.form.fields)
 
-  console.log("customerID : ", customerID, "status:", status,
-  //customerID && status !== INPROGRESS
+  console.log("customerID : ", customerID, status, customerID && status !== INPROGRESS
   );
 
   useEffect(()=> {
@@ -22,7 +21,7 @@ export const useUpdateFields = (customerID = null) => {
 
   return {
     fields,
-    setFormField: (field ) => (value) => { 
+    setFormField: (field, value) => { 
       console.log(`Updating field ${field} to ${value}`)
       dispatch(actions.setFormField({ field, value }))
     },
@@ -61,7 +60,7 @@ export const useEditCustomer = (customerID) => {
     }
   }
 }
-
+ 
 export const useEditCustomerStatus = () => {
   return useSelector(state => state.customer.edit.status)
 }

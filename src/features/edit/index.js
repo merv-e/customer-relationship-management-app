@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
-import { useEditCustomer, useEditCustomerStatus } from '../customer/hooks'
+import { useEditCustomer } from '../customer/hooks'
 import Form from '../Form'
 
 const Edit = () => {
