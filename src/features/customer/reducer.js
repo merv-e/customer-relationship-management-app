@@ -66,7 +66,7 @@ const reducers = {
     },
 
     setForm: (state, { payload }) => {
-        const customer = state.list.customers.find(c => c.id = payload)
+        const customer = state.list.customers.find(c => c.id = payload) // === 
         if (customer) {
         state.customerForm = customer
         } 

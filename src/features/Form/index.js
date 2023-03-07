@@ -39,7 +39,7 @@ const Form = ({handleSubmit, customerID, status }) => {
 
   return (
     <View style={styles.container}> 
-      <Text style={styles.header}>Create a customer</Text>
+      {/* <Text style={styles.header}>Create a customer</Text> */}
       <TextInput
         key={"firstName"}
         style={styles.text}

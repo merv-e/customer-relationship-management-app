@@ -9,15 +9,14 @@ const Customers = () => {
     const {navigate} = useNavigation();
     const customers = useListCustomers();
 
-    // const { params} = useRoute();
-    // const region = params.region; 
-    // const region = route.params.region;
-    console.log(customers);
+    const { params} = useRoute();
+    const region = params.region; 
+
+    // console.log(customers);
     // console.log(region);  
-    // console.log( params.region); 
  
 
-    // const filterByRegion = customers.filter( c => c.region === region)
+    const filterByRegion = customers.filter( c => c.region === region)
 
     // filterByRegion && filterByRegion.length > 0
 
@@ -26,13 +25,14 @@ const Customers = () => {
 
   return (
     <View> 
-        <Text>The list of customers by region </Text>  
+        <Text>The list of customers by {region} </Text>  
         {(
-            customers && customers.length > 0
+            filterByRegion && filterByRegion.length > 0
         ) ? (
                 <FlatList
                     data={customers || []}
                     renderItem={({item}) => 
+                    
                     <Row 
                      item={item}
                      keyExtractor={(item) => item.id}
@@ -50,8 +50,6 @@ const Customers = () => {
                      title={'Add Customer'} 
                      onPress={() => {
                         navigate('Add Customer' ) 
-                    //  ,
-                    //  {region : region}
                      }} 
                     /> 
     </View> 

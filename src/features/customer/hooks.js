@@ -15,9 +15,9 @@ export const useUpdateFields = (customerID = null) => {
   );
 
   useEffect(()=> {
-  //  if (customerID && status === PENDING) {
+   if (customerID && status === PENDING) {
       dispatch(actions.setForm(customerID))
-  //  }
+   }
   }, [customerID, status]);
 
   return {
