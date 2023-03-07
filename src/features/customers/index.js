@@ -12,16 +12,17 @@ const Customers = () => {
     const { params} = useRoute();
     const region = params.region; 
 
-    // console.log(customers);
     // console.log(region);  
- 
-
+    
+    
     const filterByRegion = customers.filter( c => c.region === region)
-
+    
     // filterByRegion && filterByRegion.length > 0
-    console.log(filterByRegion);
 
-    // console.log(filterByRegion); customers && customers.length > 0
+    console.log(customers);
+    // console.log(filterByRegion); 
+
+    customers && customers.length > 0
     // {region}
 
   return (
@@ -32,14 +33,10 @@ const Customers = () => {
         ) ? ( 
                 <FlatList
                     data={customers || []}
-                    renderItem={({item}) => 
-                    <Row 
-                     item={item}
-                     keyExtractor={(i) => i.id}
-                     onPress={()=> 
-                        navigate('Edit Customer', {customerID: item.id})}
-                    />
-                    }
+                    renderItem={(props) => <Row {...props} />}
+                    //  onPress={()=> 
+                    //     navigate('Edit Customer', {customerID: item.id})}
+                     keyExtractor={(item) => item.id}
                 />
             ) : (
                 <>

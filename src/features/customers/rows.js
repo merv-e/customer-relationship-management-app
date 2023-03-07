@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-// import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
-const Row = ({ item , onPress }) => {
-    // const { navigate } = useNavigation() 
+const Row = ({ item }) => {
+    const { navigate } = useNavigation() 
     // const {params} = useRoute();
     // const region = route.params.region;
 
@@ -11,8 +11,8 @@ const Row = ({ item , onPress }) => {
     // const isActive = ["active", "passive"];
 
     return (
-        <TouchableOpacity onPress={onPress}>
-            <View 
+        <TouchableOpacity onPress={() => navigate('Edit Customer', {customerID: item.id})}>
+            <View id={item.id}
             style={{ borderWidth: 1, padding: 10, margin: 10 }}>
                 <Text>ID: {item.id}</Text>
                 <Text>First Name: {item.firstName}</Text>

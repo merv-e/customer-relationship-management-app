@@ -15,7 +15,12 @@ export function* takeEditCustomer(action) {
 
        const result = 
         customers.map(c => {
-            if (c.id !== customerID) return customer
+            console.log(customerID);
+            console.log(c.id);
+            
+            if (c.id !== customerID) {
+                return c
+            }
             return fields
         })
 
