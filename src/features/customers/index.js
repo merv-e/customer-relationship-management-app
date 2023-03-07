@@ -12,53 +12,44 @@ const Customers = () => {
     const { params} = useRoute();
     const region = params.region; 
 
-    // console.log(region);  
+    console.log(region);  
     
     
     const filterByRegion = customers.filter( c => c.region === region)
+    //.map(x => x)
     
     // filterByRegion && filterByRegion.length > 0
 
     console.log(customers);
-    // console.log(filterByRegion); 
+    console.log(filterByRegion); 
 
-    customers && customers.length > 0
+    // customers && customers.length > 0
     // {region}
 
   return (
     <View> 
-        <Text>The list of customers by {region} </Text>  
-        {(
-            customers && customers.length > 0
-        ) ? ( 
-                <FlatList
-                    data={customers || []}
-                    renderItem={(props) => <Row {...props} />}
-                    //  onPress={()=> 
-                    //     navigate('Edit Customer', {customerID: item.id})}
-                     keyExtractor={(item) => item.id}
-                />
-            ) : (
-                <>
-                  <Text>{'No Customers'}</Text>
-                </>
-            )}
+        <Text>The list of customers in {region} </Text>  
+        { customers.length >0 
+        ? ( 
+          <FlatList
+              data={filterByRegion || []}
+              renderItem={(props) => <Row {...props} />}
+               keyExtractor={(item) => item.id}
+          />
+          ) : (
+          <>
+    {/* Note : Use the custom Btn comp instead */}
+            <Text>No Customers in {region} region </Text>
             <TouchableOpacity 
-          onPress={() => {
-            navigate('Add Customer')
-          }}
-        >
-          <Text >Add a New Customer</Text>
-        </TouchableOpacity>
+              onPress={() => {
+                navigate('Add Customer')}}
+            >
+              <Text >Add a New Customer</Text>
+            </TouchableOpacity>
+          </>
+            )}
     </View> 
   )
 } 
 
 export default Customers
-
-{/* <Button 
-title={'Add Customer'} 
-onPress={() => {
-   navigate('Add Customer' ) 
-}} 
-/>  */}

@@ -43,8 +43,6 @@ const ListRegions = () => {
         <Text style={styles.header}>List of the Regions</Text>
        
         {/* Maybe use Pressable */}
-        
-        {/* MAP REGIONS */}
 
         {
           regions.map(region => 
@@ -60,7 +58,7 @@ const ListRegions = () => {
            )
         }
 
-        {/* ADD CUSTOMER BUTTON */}
+        {/* Note : Use the custom Btn comp instead */}
         <TouchableOpacity 
           onPress={() => {
             navigate('Add Customer')
