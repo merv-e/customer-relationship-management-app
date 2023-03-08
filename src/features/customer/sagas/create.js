@@ -1,13 +1,13 @@
 import { all, put, select, takeLatest, delay } from 'redux-saga/effects'
+import { set } from '../../../utilities/async_storage'
 import * as actions from '../reducer'
-// import * as services from "../services"
  
 export function* watchCreateCustomer() {
     yield takeLatest(actions.createCustomer.toString(), takeCreateCustomer) //First action --- second cb func.
 }
 
 export function* takeCreateCustomer() {
-    console.log('Starting fetch request to API -- CREATE')
+    console.log("Starting fetch request to API -- CREATE")
     try {
         const fields = yield select(state => state.customer.form.fields)
 
@@ -20,7 +20,10 @@ export function* takeCreateCustomer() {
 
         yield delay(500)
 
-        const result = [customer, ...customers]
+        const result = [customer, ...customers]; 
+        
+        // The key will be used again (below) if we ever need to read the info out of async storage
+        yield set("CUSTOMERS_KEY", result);//save the animal into async storage
 
         yield put(actions.createCustomer_Result(result))
     } catch (error) {

@@ -4,14 +4,26 @@ import { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { INPROGRESS, PENDING } from '../status';
 
+// USE ASYNC_STORAGE TO SHOW CUSTOMERS LIST
+export const useListCustomers = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(actions.getCustomers()) // async
+  }, [dispatch]) 
+  
+  return useSelector(state => state.customer.list.customers)
+};
+
+
+// UPDATE THE FIELDS AND EDIT THE FORM IF THE CONDITIONS ARE MET
 export const useUpdateFields = (customerID = null) => {
   
   const dispatch = useDispatch()
   const status = useSelector(state => state.customer.edit.status)
   const fields = useSelector(state => state.customer.form.fields)
 
-  console.log("customerID : ", customerID, status, customerID && status !== INPROGRESS
-  );
+  console.log("customerID : ", customerID, status );
 
   useEffect(()=> {
    if (customerID && status === PENDING) {
@@ -26,12 +38,9 @@ export const useUpdateFields = (customerID = null) => {
       dispatch(actions.setFormField({ field, value }))
     },
   }
-}
+};
 
-export const useListCustomers = () => {
-  return useSelector((state) => state.customer.list.customers)
-}
-
+//CREATE
 export const useNewCustomer = () => {
   const dispatch = useDispatch();
   
@@ -42,6 +51,8 @@ export const useNewCustomer = () => {
     }
   }
 };
+
+//EDIT
 
 export const useCreateCustomerStatus = () => {
   return useSelector(state => state.customer.create.status)
@@ -59,9 +70,9 @@ export const useEditCustomer = (customerID) => {
       dispatch(actions.editCustomer(customerID))
     }
   }
-}
+};
  
 export const useEditCustomerStatus = () => {
   return useSelector(state => state.customer.edit.status)
-}
+};
 
