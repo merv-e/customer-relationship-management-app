@@ -12,7 +12,7 @@ const initialState = {
             region: null, 
         }
     },
-    get: {
+    get: { 
         status: PENDING,
     },
     list: { 
@@ -89,7 +89,7 @@ const reducers = {
     editCustomerResult: (state, { payload }) => {
         state.edit.status = SUCCESS;
         state.list.customers = payload;
-        
+         
         state.form.fields = initialState.form.fields; 
         state.edit = initialState.edit;
     },
@@ -102,17 +102,21 @@ const reducers = {
     
     // get the customers/info from async storage
     getCustomers: (state) => {
-        state.get.status = REQUESTING
+        state.get.status = REQUESTING;
     },
 
-    getSavedCustomers :(state, {payload}) => {
-        state.get.status = "SUCCESS"
-        state.list.customers = payload
-        state.get = initialState.get
+    getCustomersResult :(state, {payload}) => {
+        state.get.status = SUCCESS;
+        state.list.customers = payload;
+        state.form.fields = initialState.form.fields; 
+        state.get = initialState.get;
     },
-    getCustomersError : (state) => {
-        state.get.status = ERROR
-    }
+
+    getCustomersError : (state, {payload}) => {
+        state.get.status = ERROR;
+        state.error.message = payload;
+        state.form.fields = initialState.form.fields;
+    },
 }
 
 const slice = createSlice({
@@ -132,9 +136,11 @@ export const {
     editCustomerError,
     editCustomerStatus,
     getCustomers,
-    getSavedCustomers,
+    getCustomersResult,
     getCustomersError,    
-    // createCustomer_Success,
 } = slice.actions
 
 export default slice.reducer
+
+
+// deleteCustomer

@@ -31,9 +31,9 @@ const ListRegions = () => {
     ];
     
     
-    useEffect(() => {
-      dispatch(actions.getCustomers());
-    }, []);
+    // useEffect(() => {
+    //   dispatch(actions.getCustomers());
+    // }, []);
 
     return (
 

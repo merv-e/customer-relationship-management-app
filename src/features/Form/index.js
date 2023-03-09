@@ -27,6 +27,12 @@ const Form = ({handleSubmit, customerID, status }) => {
     handleSubmit() 
     n.navigate("List Regions")
   };
+  
+  // TODO: DELETE FUNCTIONALITY
+  const onDelete = () => {
+    handleDelete()
+    n.navigate("List Regions")
+  };
 
   const {
     firstName, 
@@ -77,7 +83,19 @@ const Form = ({handleSubmit, customerID, status }) => {
         >
           <Text>Submit</Text>
       </TouchableOpacity>
+
+{/* ADD DELETE FUNCTIONALITY */}
+      { customerID && 
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={onDelete} 
+        >
+          <Text>Delete Customer</Text>
+      </TouchableOpacity>
+      }
     </View>
+
+    
   )
 }
 

@@ -17,7 +17,7 @@ export const useListCustomers = () => {
 
 
 // UPDATE THE FIELDS AND EDIT THE FORM IF THE CONDITIONS ARE MET
-export const useUpdateFields = (customerID = null) => {
+export const useUpdateFields = (customerID) => {
   
   const dispatch = useDispatch()
   const status = useSelector(state => state.customer.edit.status)
