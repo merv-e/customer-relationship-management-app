@@ -5,6 +5,7 @@ import Welcome from "../screens/Welcome/index";
 import Customers from "../screens/customers/ListCustomers"
 import New from "../screens/new/CreateCustomer"
 import Edit from "../screens/edit/EditCustomer";
+import CustomerNotifications from "../features/notifications/"
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
@@ -26,6 +27,10 @@ const Navigation = () => {
            <Stack.Screen
                 name="Add Customer"
                 component={New}
+            />
+           <Stack.Screen
+                name="Customer Notifications"
+                component={CustomerNotifications}
             />
 
            <Stack.Screen
