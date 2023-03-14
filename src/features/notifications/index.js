@@ -1,24 +1,13 @@
-import { Constants } from "expo-constants";
-import *as Notifications from "expo-notifications";
+import * as Notifications from "expo-notifications";
 import React, { useEffect } from "react";
 import { Button, Keyboard, Text, View } from "react-native";
-// import *as Device from "expo-notifications";
-
-const customerName = [
-  "X",
-  "Y",
-  "Z",
-  "A",
-  "B",
-  "C",
-  "D",
-]; 
+import * as Device from "expo-device";
 
 const onSubmit = (seconds) => {
-Keyboard.dismiss(); 
+Keyboard.dismiss() 
 
-const schedulingOptions = {
-  content: {
+Notifications.scheduleNotificationsAsync({
+   content: {
       title: `Do not forget to contact ${customerName[Math.floor(Math.random()*customerName.length)]}`,
       body: "Open the app to find out the customer you'll contact today.",
       sound: true,
@@ -28,11 +17,7 @@ const schedulingOptions = {
   trigger: {
       seconds: seconds,
   }
-}  
-
-Notifications.scheduleNotificationsAsync(
-  schedulingOptions,
-)
+})
 };
 
 const handleNotification = () => {
@@ -42,11 +27,11 @@ const handleNotification = () => {
 
 const askNotification = async () => {
   const {status} = await Notifications.requestPermissionsAsync()
-      if(Constants.isDevice && status === "granted")
+      if(Device.isDevice && status === "granted")
       console.log("Notification permissions granted.");
 };
 
-const Notifications = () => {
+const CustomerNotifications = () => {
   useEffect(()=> {
       askNotification();
 
@@ -66,4 +51,4 @@ const Notifications = () => {
   )
 };
 
-export default Notifications
+export default CustomerNotifications
