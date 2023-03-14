@@ -12,19 +12,7 @@ const Customers = () => {
     const { params} = useRoute();
     const region = params.region; 
 
-    console.log(region);  
-    
-    
-    const filterByRegion = customers.filter( c => c.region === region)
-    //.map(x => x)
-    
-    // filterByRegion && filterByRegion.length > 0
-
-    console.log(customers);
-    console.log(filterByRegion); 
-
-    // customers && customers.length > 0
-    // {region}
+    const filterByRegion = customers.filter((c) => c.region === region);
 
   return (
     <View> 
@@ -54,5 +42,3 @@ const Customers = () => {
 } 
 
 export default Customers
-
-// {/* Note : Use the custom Btn comp instead */}

@@ -1,11 +1,11 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
-import Notifications from "../../features/notifications";
+import CustomerNotifications from "../../features/notifications";
 
 const NotificationScreen = () => {
   return (
     <SafeAreaView>
-        <Notifications/>
+        <CustomerNotifications/>
     </SafeAreaView>
   )
 }

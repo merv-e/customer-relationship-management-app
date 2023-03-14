@@ -4,14 +4,14 @@ import welcomeStyles from "./styles";
 
  const Welcome = () =>  {
     const styles = StyleSheet.create(welcomeStyles());
-    const nav = useNavigation()
+    const {navigate} = useNavigation()
 
   return (
     <SafeAreaView>
         <ScrollView>
             <View style={styles.container}> 
                 <Text>Welcome to Customer Manager App!</Text>
-                <TouchableOpacity onPress={() => nav.navigate("List Regions")}>
+                <TouchableOpacity onPress={() => navigate("List Regions")}>
                     <Text>Click to View The App</Text>
                 </TouchableOpacity>
             </View>

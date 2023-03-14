@@ -25,8 +25,8 @@ const ListRegions = () => {
         title: "Middle East",
       },
       {
-        id : "Asia Pasific",
-        title: "Asia Pasific",
+        id : "Asia Pacific",
+        title: "Asia Pacific",
       },
     ];
     
