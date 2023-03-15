@@ -11,7 +11,7 @@ const Navigation = () => {
     const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="Welcome"> 
+        <Stack.Navigator initialRouteName="Customer Notifications"> 
             <Stack.Screen
                 name="Welcome"
                 component={Welcome}
@@ -28,15 +28,15 @@ const Navigation = () => {
                 name="Add Customer"
                 component={New}
             />
-           <Stack.Screen
-                name="Customer Notifications"
-                component={CustomerNotifications}
-            />
 
            <Stack.Screen
                 name="Edit Customer"
                 component={Edit}
             />
+             <Stack.Screen
+                  name="Customer Notifications"
+                  component={CustomerNotifications}
+              />
            
         </Stack.Navigator>
     </NavigationContainer>

@@ -4,9 +4,9 @@ import Customers from "../../features/customers/index"
 
 const ListCustomers = () => ( 
   <SafeAreaView>
-    <ScrollView>
+    {/* <ScrollView> */}
       <Customers />
-    </ScrollView>
+    {/* </ScrollView> */}
   </SafeAreaView>
 )
 
