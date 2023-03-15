@@ -36,6 +36,8 @@
     },
     "updates": {
       "url": "https://u.expo.dev/905b2fb2-85c1-4c86-81fd-8217fd42ed23"
-    }
-  }
+    },
+    "sdkVersion": "48.0.0"
+  },
+  "name": "customer-relationship-management-app"
 }
