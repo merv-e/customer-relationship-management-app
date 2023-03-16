@@ -23,8 +23,7 @@ Notifications.setNotificationHandler({
       await  Notifications.scheduleNotificationAsync({ 
         content: { 
           title: `Schedule a call with ${CustomerToBeContacted}`,
-          body: 'You need to have a call with ${customer} ',
-          body: "Open the app to read more about your customer details!",
+          body: "Open the app to read more about it!",
           priority: Notifications.AndroidNotificationPriority.MAX,
           color: "blue",
         },

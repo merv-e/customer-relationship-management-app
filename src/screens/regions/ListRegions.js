@@ -29,20 +29,16 @@ const ListRegions = () => {
         title: "Asia Pacific",
       },
     ];
-    
-    
-    // useEffect(() => {
-    //   dispatch(actions.getCustomers());
-    // }, []);
 
     return (
-
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
        <View style={styles.container} >
         <Text style={styles.header}>List of the Regions</Text>
        
-        {/* Maybe use Pressable */}
+      {/* NOTES: 
+         - Maybe use Pressable 
+         - Instead of mapping use SectionList? */}
 
         {
           regions.map(region => 
@@ -57,13 +53,10 @@ const ListRegions = () => {
            />
            )
         }
-
-        {/* Note : Use the custom Btn comp instead */}
         <TouchableOpacity 
           onPress={() => {
             navigate('Add Customer')
-          }}
-        >
+          }}>
           <Text style={styles.button} >Add a New Customer</Text>
         </TouchableOpacity>
         
