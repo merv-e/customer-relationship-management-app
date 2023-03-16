@@ -11,7 +11,7 @@ const Navigation = () => {
     const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="List Regions"> 
+        <Stack.Navigator initialRouteName="Welcome"> 
             <Stack.Screen
                 name="Welcome"
                 component={Welcome}

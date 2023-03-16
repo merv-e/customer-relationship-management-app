@@ -1,10 +1,8 @@
 const customerStyles = () => {
-    // fontSizes should be made responsive.
     return {
         container: {
             flex: 1,
             marginTop : 10,
-            // alignItems : "center",
             gap: 10, //temp solution.
         },
         header: {
