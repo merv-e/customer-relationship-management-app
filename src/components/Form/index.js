@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import newStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { useUpdateFields } from '../customer/hooks';
+import { useUpdateFields } from '../../features/customer/hooks';
+import Btn from '../Btn';
 // import SelectDropdown from 'react-native-select-dropdown';
 // import { SelectList } from 'react-native-dropdown-select-list';
 
-const Form = ({handleSubmit, customerID, status }) => {
+const Form = ({handleSubmit, customerID, status, text, headerText }) => {
 
   const styles = StyleSheet.create(newStyles())
   const n = useNavigation();
@@ -35,11 +36,6 @@ const Form = ({handleSubmit, customerID, status }) => {
 
   return (
     <View style={styles.container}> 
-      <Text 
-       style={styles.header}
-       >
-      Create a customer
-      </Text>
       <TextInput
         key={"firstName"}
         style={styles.text}
@@ -69,23 +65,23 @@ const Form = ({handleSubmit, customerID, status }) => {
         value={region || ""}
         placeholder="Region"
       />
-
+    
+    {/* Todo : add the Btn component instead. */}
       <TouchableOpacity 
-        style={styles.button} 
-        onPress={onSubmit} 
+        onPress={onSubmit}
         >
-          <Text>Submit</Text>
+          <Text style={styles.button}>{text}</Text>
       </TouchableOpacity>
 
 {/* ADD DELETE FUNCTIONALITY */}
-      { customerID && 
-      <TouchableOpacity 
+      {/* { customerID && 
+      <TouchableOpacity  
         style={styles.button} 
         onPress={onDelete} 
         >
           <Text>Delete Customer</Text>
       </TouchableOpacity>
-      }
+      } */}
     </View>
 
     

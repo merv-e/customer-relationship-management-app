@@ -20,18 +20,16 @@ const newStyles = () => {
             borderWidth : 1,
             fontSize: 15,
         },
-        header : {
-            fontSize: 25,
-            textAlign: "center",
-        },
         button: {
             fontSize: 15,
+            backgroundColor: "rgba(78, 116, 289, 1)",
             alignSelf: 'center',
             padding: 10,
-            borderRadius: 10,
-            borderWidth : 1,
-            // backgroundColor: 'grey',
+            borderRadius: 5,
+            color: "#F7F9F9",
             marginBottom : 10,
+            width: 200,
+            textAlign: "center",
           },
 }}
 
