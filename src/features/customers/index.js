@@ -15,15 +15,15 @@ const Customers = () => {
     const filterByRegion = customers.filter((c) => c.region === region);
 
   return (
-    <View> 
-        <Text>The list of customers in {region} </Text>  
+    <View style= {styles.container}> 
+        <Text style={styles.header} >The list of customers in {region} </Text>  
         {
           (customers && customers.length > 0) 
         ? ( 
           <FlatList
               data={filterByRegion || []}
               renderItem={(props) => <Row {...props} />}
-               keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.id}
           />
           ) : (
           <>

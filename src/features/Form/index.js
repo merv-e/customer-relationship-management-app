@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import {  View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import newStyles from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { useUpdateFields } from '../../features/customer/hooks';
-import Btn from '../Btn';
+import { useUpdateFields } from '../customer/hooks';
+import Btn from '../../components/Btn';
 // import SelectDropdown from 'react-native-select-dropdown';
 // import { SelectList } from 'react-native-dropdown-select-list';
 

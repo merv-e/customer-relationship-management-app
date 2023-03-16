@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNewCustomer, useCreateCustomerStatus } from '../customer/hooks'
-import Form from '../../components/Form'
+import Form from '../Form'
 
 const New = () => {
   const { onSubmit } = useNewCustomer()
