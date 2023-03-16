@@ -12,21 +12,20 @@ Notifications.setNotificationHandler({
     }),
   });
 
-    const onSubmit = (customers) => {
+    // const onSubmit = (customers) => {
 
-      const chooseRandomCustomer = customers[Math.floor(Math.random() * customers.length)];
-
-      const CustomerToBeContacted = chooseRandomCustomer.firstName + " " + chooseRandomCustomer.lastName;
+     
     
-      Keyboard.dismiss()
-    };
+    //   Keyboard.dismiss()
+    // };
     
-    async function scheduleNotification() {
+    async function scheduleNotification(CustomerToBeContacted) {
       await  Notifications.scheduleNotificationAsync({ 
-        content: {
-          title: `Its time for a customer follow up :  ${CustomerToBeContacted}`,
+        content: { 
+          title: `Schedule a call with ${CustomerToBeContacted}`,
+          body: 'You need to have a call with ${customer} ',
           body: "Open the app to read more about your customer details!",
-          priority: Notifications.AndroidNotificationPriority.HIGH,
+          priority: Notifications.AndroidNotificationPriority.MAX,
           color: "blue",
         },
         trigger: {
@@ -60,7 +59,7 @@ const CustomerNotifications = () => {
       region: "Europe" 
     }]
   }
-  // else customers = useSelector((state) => state.customer.list.customers)
+  else customers = useSelector((state) => state.customer.list.customers)
 
   useEffect(() => {
     askNotification()
