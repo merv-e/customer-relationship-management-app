@@ -11,17 +11,6 @@ const Form = ({handleSubmit, customerID, status }) => {
   const styles = StyleSheet.create(newStyles())
   const n = useNavigation();
   const {fields, setFormField} = useUpdateFields(customerID);
-
-  // const [selected, setSelected] = React.useState("");
-
-  // const regions = [
-  //   "Europe",
-  //    "Americas",
-  //    "Middle East",
-  //    "Asia Pasific",
-  // ];
-  
-  // const isUserActive = ["active", "inactive"];
   
   const onSubmit = () => {
     handleSubmit() 
@@ -46,7 +35,11 @@ const Form = ({handleSubmit, customerID, status }) => {
 
   return (
     <View style={styles.container}> 
-      {/* <Text style={styles.header}>Create a customer</Text> */}
+      <Text 
+       style={styles.header}
+       >
+      Create a customer
+      </Text>
       <TextInput
         key={"firstName"}
         style={styles.text}

@@ -1,21 +1,55 @@
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text, View} from "react-native"
-import welcomeStyles from "./styles";
+import Btn from "../../components/Btn";
+// import welcomeStyles from "./styles";
 
  const Welcome = () =>  {
-    const styles = StyleSheet.create(welcomeStyles());
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      // backgroundColor: '#E0D0C1',
+      // alignItems: 'center',
+      // justifyContent: 'center',
+      textAlign: "center",
+      padding : 20,
+      gap: 20,
+    },
+    header: {
+      fontSize: 20,
+      color: "#846C5B",
+      fontWeight: 500,
+    },
+    btn: {
+      fontSize: 15,
+      alignSelf: 'center',
+      backgroundColor:'rgba(78, 116, 289, 1)',
+      padding: 10,
+      borderRadius: 5,
+      width: 200,
+      color: '#F7F9F9',
+    }
+  });
+
     const {navigate} = useNavigation()
 
+    // NOTE: because View component is inside SafeAreaView and also ScrollView, justifyContent and alignItems being centered is not working. Check it out !
+
   return (
-    <SafeAreaView>
-        <ScrollView>
-            <View style={styles.container}> 
-                <Text>Welcome to Customer Manager App!</Text>
-                <TouchableOpacity onPress={() => navigate("List Regions")}>
-                    <Text>Click to View The App</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
+    <SafeAreaView> 
+      <ScrollView>
+        <View style={styles.container}> 
+          <Text style={styles.header}>Welcome to Customer Manager App!</Text>
+          
+          <TouchableOpacity 
+           
+           onPress={() => navigate("List Regions")}>
+              <Text style={styles.btn}>Click to View The App</Text>
+          </TouchableOpacity>
+
+          {/* <Btn/> */}
+
+        </View>
+      </ScrollView>
     </SafeAreaView>
   )
 } 
