@@ -1,18 +1,19 @@
-import { Text, View, FlatList , Button, TouchableOpacity} from 'react-native' 
+import { Text, View, FlatList , Button, TouchableOpacity, StyleSheet} from 'react-native' 
 import Row from './rows';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from "react";
 import { useListCustomers } from '../customer/hooks';
+import customerStyles from './styles';
 
 const Customers = () => {  
+    const styles = StyleSheet.create(customerStyles())
+    const {navigate} = useNavigation()
+    const customers = useListCustomers()
 
-    const {navigate} = useNavigation();
-    const customers = useListCustomers();
+    const { params} = useRoute()
+    const region = params.region 
 
-    const { params} = useRoute();
-    const region = params.region; 
-
-    const filterByRegion = customers.filter((c) => c.region === region);
+    const filterByRegion = customers.filter((c) => c.region === region)
 
   return (
     <View style= {styles.container}> 
@@ -35,7 +36,7 @@ const Customers = () => {
               onPress={() => {
                 navigate('Add Customer')}}
             >
-              <Text >Add a New Customer</Text>
+              <Text style={styles.button} >Add a New Customer</Text>
             </TouchableOpacity>
     </View> 
   )

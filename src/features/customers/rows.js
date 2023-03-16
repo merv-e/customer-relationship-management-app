@@ -1,24 +1,45 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import customerStyles from './styles'
 
 const Row = ({ item }) => {
-    const { navigate } = useNavigation() 
-    // const {params} = useRoute();
-    // const region = route.params.region;
+    const styles = StyleSheet.create(customerStyles())
 
-    // console.log(region);
-    // const isActive = ["active", "passive"];
+    const { navigate } = useNavigation() 
 
     return (
-        <TouchableOpacity onPress={() => navigate('Edit Customer', {customerID: item.id})}>
-           
-                <Text>ID: {item.id}</Text>
-                <Text>First Name: {item.firstName}</Text>
-                <Text>Last Name: {item.lastName}</Text>
-                <Text>User Activity: {item.isActive}</Text>
-                <Text>Region: {item.region}</Text>
-        </TouchableOpacity>
+        <View 
+         style={styles.customerContainer}
+        >
+         <TouchableOpacity 
+          onPress={() => navigate('Edit Customer', 
+          {customerID: item.id})}>
+            <Text 
+            style={styles.customerContainerText}>
+            ID: {item.id}
+            </Text>
+            <Text
+            style={styles.customerContainerText}>
+            First Name: {item.firstName}
+            </Text>
+            <Text
+            style={styles.customerContainerText}
+            >
+            Last Name: {item.lastName}
+            </Text>
+            <Text
+            style={styles.customerContainerText}
+            >
+            User Activity: {item.isActive}
+            </Text>
+            <Text
+            style={styles.customerContainerText}
+            >
+            Region: {item.region}
+            </Text>
+         </TouchableOpacity>
+        </View>
     )
 }
 
