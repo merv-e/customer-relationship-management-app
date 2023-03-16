@@ -4,6 +4,8 @@ const customerStyles = () => {
             flex: 1,
             marginTop : 10,
             gap: 10, //temp solution.
+            justifyContent: "flex-start",
+            // alignItems: "flex-start", 
         },
         header: {
             fontSize: 15,
@@ -17,12 +19,12 @@ const customerStyles = () => {
             padding: 10,
             borderRadius: 5,
             color: "#F7F9F9",
-            marginBottom : 10,
+            marginBottom : 20,
             width: 200,
             textAlign: "center",
         },
         customerContainer: {
-            flex: 1,
+            // flex: 1,
             alignItems : "center",
             backgroundColor: "#17183B",
             marginVertical: 10,
@@ -31,6 +33,10 @@ const customerStyles = () => {
         },
         customerContainerText: {
             color: "#F7F9F9",
+        },
+        noCustomer : { 
+            textAlign: 'center',
+            fontSize: 15,
         }
 }}
 

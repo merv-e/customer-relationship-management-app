@@ -28,7 +28,7 @@ const Customers = () => {
           />
           ) : (
           <>
-            <Text>No Customers in {region} region </Text>
+            <Text style= {styles.noCustomer}>No Customers in {region} region </Text>
             
           </>
             )}

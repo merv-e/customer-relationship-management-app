@@ -3,11 +3,11 @@ import { ScrollView, SafeAreaView } from 'react-native'
 import Customers from "../../features/customers/index"
 
 const ListCustomers = () => ( 
-  <SafeAreaView>
-    <ScrollView>
+  // <SafeAreaView>
+  //   <ScrollView>
       <Customers />
-    </ScrollView>
-  </SafeAreaView>
+  //   </ScrollView>
+  // </SafeAreaView>
 )
 
 export default ListCustomers
