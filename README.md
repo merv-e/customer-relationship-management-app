@@ -1,4 +1,4 @@
-# Customer Relationship Manager
+# Customer Relationship Manager App
 
 ## How to install the project
 In order to install this app, you need to clone the repository first, and then use either `npm` or `yarn` for installing the dependencies. Such as:
