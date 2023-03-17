@@ -1,38 +1,49 @@
-import *as Notifications from "expo-notifications";
-import React, { useEffect, useState, useRef } from "react"; 
+import * as Notifications from "expo-notifications";
+import React, { useEffect} from "react"; 
 import { Button, Keyboard, Text, View, Platform } from "react-native";
 import * as Device from "expo-device";
 import { useSelector } from "react-redux";
+import { useRoute } from "@react-navigation/native";
 
-Notifications.setNotificationHandler({
+const onSubmit = (customers) => {
+   
+  const chooseRandomCustomer = customers[Math.floor(Math.random() * customers.length)];
+  
+  console.log("Schedule button is triggered!");
+
+  console.log("chooseRandomCustomer:", chooseRandomCustomer);
+  
+  const CustomerToBeContacted = chooseRandomCustomer.firstName + " " + chooseRandomCustomer.lastName;
+  
+      console.log("CustomerToBeContacted:", CustomerToBeContacted); 
+     
+      // async function scheduleNotification(CustomerToBeContacted) {
+      //     await 
+
+        Keyboard.dismiss()
+         Notifications.scheduleNotificationAsync({ 
+          content: { 
+            title: `Schedule a call with ${CustomerToBeContacted}`,
+            body: "Open the app to read more about it!",
+            priority: Notifications.AndroidNotificationPriority.HIGH,
+            color: "blue",
+          },
+          trigger: {
+            seconds: 5,
+          },
+        })
+      };  
+
+    // };
+
+  Notifications.setNotificationHandler({
     handleNotification: async () => ({ 
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: false,
     }),
   });
-
-    // const onSubmit = (customers) => {
-
-     
     
-    //   Keyboard.dismiss()
-    // };
-    
-    async function scheduleNotification(CustomerToBeContacted) {
-      await  Notifications.scheduleNotificationAsync({ 
-        content: { 
-          title: `Schedule a call with ${CustomerToBeContacted}`,
-          body: "Open the app to read more about it!",
-          priority: Notifications.AndroidNotificationPriority.MAX,
-          color: "blue",
-        },
-        trigger: {
-          seconds: 5,
-        },
-      })
-    };
-
     const askNotification = async () => {
       // Notification permissions
       const { status } = await Notifications.requestPermissionsAsync();
@@ -44,21 +55,13 @@ Notifications.setNotificationHandler({
     const handleNotification = () => {
       console.warn("Your notification ran, but will not show up in the app!");
     };
-
+ 
   
 const CustomerNotifications = () => {
-
-  let customers;
-  
-  if (customers === []) {
-    customers = [{
-      firstName: "Merve",
-      lastName: "Ustun",
-      isActive: "yes",
-      region: "Europe" 
-    }]
-  }
-  else customers = useSelector((state) => state.customer.list.customers)
+  // const {params} = useRoute();
+  // const customers = params.customers; 
+  const customers = useSelector((state) => state.customer.list.customers)
+  console.log(customers);
 
   useEffect(() => {
     askNotification()
@@ -77,13 +80,22 @@ const CustomerNotifications = () => {
         gap: 30,
         marginTop: 20,
       }}>
-        <Text>Schedule a call with the customer</Text>
-      <Button
+      {
+        (customers && customers.length > 0) 
+        ? (
+          <>
+          <Text>Schedule a call with the customer</Text>
+      <Button 
         title="Schedule"
-        onPress={ async (customers) => {
-          await scheduleNotification();
-        }}
+        onPress={() => onSubmit(customers)}
       />
+      </>)
+      : ( 
+        <>
+        <Text>There are no registered customers in the app</Text>
+        </>
+      )
+      }
     </View>
   );
 };
