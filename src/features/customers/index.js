@@ -13,13 +13,22 @@ const Customers = () => {
     const { params} = useRoute()
     const region = params.region 
 
+    console.log(filterByRegion);
+    console.log(customers);
+
     const filterByRegion = customers.filter((c) => c.region === region)
+    
+    // const filterByRegion = () => {
+    // if (customers === []) customers.filter((c) => c.region === region)
+    //  else filterByRegion = []
+      // else filterByRegion = [];
+    // }
 
   return (
     <View style= {styles.container}> 
         <Text style={styles.header} >The list of customers in {region} </Text>  
         {
-          (customers && customers.length > 0) 
+          (filterByRegion && filterByRegion.length > 0 ) 
         ? ( 
           <FlatList
               data={filterByRegion || []}

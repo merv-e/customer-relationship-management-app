@@ -123,7 +123,7 @@ const reducers = {
     clearStorage : (state) => {
         state.clear.status = REQUESTING
     },
-    clearStorageSuccess :(state) => {
+    clearStorageResult :(state) => {
         state.clear.status = SUCCESS
         state.list.customers = initialState.list.customers
         state.clear.status = initialState.clear.status
@@ -154,7 +154,7 @@ export const {
     getCustomersError,
     clearStorage,
     clearStorageError,
-    clearStorageSuccess,    
+    clearStorageResult,    
 } = slice.actions
 
 export default slice.reducer

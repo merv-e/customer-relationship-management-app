@@ -46,7 +46,7 @@ import { useDispatch } from "react-redux";
           {/* List regions */}
           <TouchableOpacity 
            onPress={() => navigate("List Regions")}>
-              <Text style={styles.btn}>Click to View The App</Text>
+              <Text style={styles.btn}>Click to view the app</Text>
           </TouchableOpacity>
 
         {/* show notifications */}
@@ -58,7 +58,7 @@ import { useDispatch } from "react-redux";
         {/* clear storage */}
           <TouchableOpacity 
            onPress={() => dispatch(actions.clearStorage())}>
-              <Text style={styles.btn}>Clear Storage</Text>
+              <Text style={styles.btn}>Click to clear storage</Text>
           </TouchableOpacity>
 
         </View>

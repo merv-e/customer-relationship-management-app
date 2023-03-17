@@ -27,4 +27,7 @@ export const get = async (key) => {
     };
 };
 
-
+// to clear the storage
+export const clear = async () => {
+  return await AsyncStorage.clear()
+}
