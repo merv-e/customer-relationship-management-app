@@ -14,54 +14,22 @@ const Customers = () => {
     const { params} = useRoute()
     const region = params.region 
 
-    // console.log(filterByRegion);
-    console.log(customers); 
-
-    // const filterByRegion = 
-    // typeof customers === null
-    // ? []
-    // :
-    //  customers.filter((c) => c.region === region)
-    
-    // const filterByRegion =
-    // customers === null
-    // ? customers === []
-    // : customers.filter((c) => c.region === region);
-
-    // if (customers === null) {
-    //   customers = [];
-    // }
-
-    const temporaryCustomers = [{
-      id: "245aasd",
-      firstName: "Merve",
-      lastName: "Ustun",
-      isActive: "yes",
-      region: "Europe" 
-    }]; 
-
-    // const deneme = (customers === null || customers.length ===0) ? temporaryCustomers : filterByRegion; 
-    
-    const filterByRegion =
-    //  customers === null 
-    //  ? filterByRegion === [] 
-    //  : 
-     customers?.filter((c) => c?.region === region);
+    const filterByRegion = customers.filter((c) => c.region === region);
     
   return (
     <View style= {styles.container}> 
         <Text style={styles.header} >The list of customers in {region} </Text>  
         {
-          ( customers === null || customers === []) //filterByRegion && filterByRegion.length > 0 
-        ? (  
-            <Text style= {styles.noCustomer}>No Customers in {region} region </Text>
-          ) : (
-          <>
-            <FlatList
+          (filterByRegion && filterByRegion.length > 0 ) 
+        ? ( 
+          <FlatList
               data={filterByRegion || []}
               renderItem={(props) => <Row {...props} />}
               keyExtractor={(item) => item.id}
           />
+          ) : (
+          <>
+            <Text style= {styles.noCustomer}>No Customers in {region} region </Text>
           </>
             )}
             <TouchableOpacity 

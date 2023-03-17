@@ -10,17 +10,12 @@ export function* takeGetCustomers() {
 
     try {
         const customers = yield get("CUSTOMERS_KEY")
-
-        // const checkForNullorArray = 
-        //  customers === null 
-        //  ? []
-        //  : yield get("CUSTOMERS_KEY")
         
         console.log("customers are being loaded:", customers);
 
         yield delay(1500) //acts as if there's an API call
         
-        yield put(actions.getCustomersResult(customers)) 
+        yield put(actions.getCustomersResult(customers || [])) 
     } 
     catch (error) {
         yield put(actions.getCustomersResult(error.toString()))
