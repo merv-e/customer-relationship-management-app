@@ -1,9 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text, View} from "react-native"
-import Btn from "../../components/Btn";
-// import welcomeStyles from "./styles";
+// import Btn from "../../components/Btn";
+import * as actions from "../../features/customer/reducer"
+import { useDispatch } from "react-redux";
 
  const Welcome = () =>  {
+  const dispatch = useDispatch();
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -40,13 +43,23 @@ import Btn from "../../components/Btn";
         <View style={styles.container}> 
           <Text style={styles.header}>Welcome to Customer Manager App!</Text>
           
+          {/* List regions */}
           <TouchableOpacity 
-           
            onPress={() => navigate("List Regions")}>
               <Text style={styles.btn}>Click to View The App</Text>
           </TouchableOpacity>
 
-          {/* <Btn/> */}
+        {/* show notifications */}
+          <TouchableOpacity 
+           onPress={() => navigate("Customer Notifications")}>
+              <Text style={styles.btn}>Click to see the notifications</Text>
+          </TouchableOpacity>
+
+        {/* clear storage */}
+          <TouchableOpacity 
+           onPress={() => dispatch(actions.clearStorage())}>
+              <Text style={styles.btn}>Clear Storage</Text>
+          </TouchableOpacity>
 
         </View>
       </ScrollView>

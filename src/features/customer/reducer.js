@@ -31,6 +31,9 @@ const initialState = {
     error: {
         message: "",
     },
+    clear : {
+        status: PENDING,
+    }
 }
 
 const reducers = {
@@ -117,6 +120,17 @@ const reducers = {
         state.error.message = payload;
         state.form.fields = initialState.form.fields;
     },
+    clearStorage : (state) => {
+        state.clear.status = REQUESTING
+    },
+    clearStorageSuccess :(state) => {
+        state.clear.status = SUCCESS
+        state.list.customers = initialState.list.customers
+        state.clear.status = initialState.clear.status
+    },
+    clearStorageError : (state) => {
+        state.clear.status = ERROR
+    }
 }
 
 const slice = createSlice({
@@ -137,7 +151,10 @@ export const {
     editCustomerStatus,
     getCustomers,
     getCustomersResult,
-    getCustomersError,    
+    getCustomersError,
+    clearStorage,
+    clearStorageError,
+    clearStorageSuccess,    
 } = slice.actions
 
 export default slice.reducer
