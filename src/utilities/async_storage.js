@@ -1,24 +1,26 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const set = async (key, value) => {
-  // try {
+  try {
     console.log("SAVING TO ASYNC STORAGE:", key, value);
+    console.log("SAVING TO ASYNC STORAGE:", key, value, "completed.");
     const serialize = JSON.stringify(value);
     return await AsyncStorage.setItem(key, serialize);
-  // }
-  // catch (e) {
-  //   return {
-  //       error: "FAILED TO SAVE TO ASYNC STORAGE"
-  //   };
-  // }
+  }
+  catch (e) {
+    return {
+        error: "FAILED TO SAVE TO ASYNC STORAGE"
+    };
+  }
 };
 
 
 export const get = async (key) => {
-  console.log("LOADING FROM ASYNC STORAGE:", key);
-    try {
-        const raw = await AsyncStorage.getItem(key);
+  try {
+    const raw = await AsyncStorage.getItem(key);
+    console.log("LOADING FROM ASYNC STORAGE:", key);
           return JSON.parse(raw)
+
     } 
     catch (e) {
         return {

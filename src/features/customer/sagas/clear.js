@@ -14,6 +14,6 @@ function* takeClearStorage() {
       yield put(actions.clearStorageResult([]))
     }
     catch (error) {
-      yield put(actions.clearStorageError())
+      yield put(actions.clearStorageError(error.toString()))
     }
   }

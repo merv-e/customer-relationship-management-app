@@ -23,7 +23,7 @@ export const useUpdateFields = (customerID) => {
   const status = useSelector(state => state.customer.edit.status)
   const fields = useSelector(state => state.customer.form.fields)
 
-  console.log("customerID : ", customerID, status );
+  // console.log("customerID : ", customerID, status );
 
   useEffect(()=> {
    if (customerID && status === PENDING) {

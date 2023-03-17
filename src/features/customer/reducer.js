@@ -25,9 +25,6 @@ const initialState = {
     edit: {
         status: PENDING,
     },
-    clear: {
-        status: PENDING,
-    },
     error: {
         message: "",
     },
@@ -104,15 +101,14 @@ const reducers = {
     },
     
     // get the customers/info from async storage
-    getCustomers: (state) => {
+    getCustomers: (state, {payload}) => {
         state.get.status = REQUESTING;
     },
 
     getCustomersResult :(state, {payload}) => {
-        state.get.status = SUCCESS;
         state.list.customers = payload;
-        state.form.fields = initialState.form.fields; 
-        state.get = initialState.get;
+        state.get.status = SUCCESS;
+        state.get.status = initialState.get.status;
     },
 
     getCustomersError : (state, {payload}) => {
@@ -125,7 +121,7 @@ const reducers = {
     },
     clearStorageResult :(state) => {
         state.clear.status = SUCCESS
-        state.list.customers = initialState.list.customers
+        state.list = initialState.list
         state.clear.status = initialState.clear.status
     },
     clearStorageError : (state) => {
